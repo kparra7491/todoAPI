@@ -40,26 +40,32 @@ export class Home extends React.Component {
 		return (
 			<div>
 				<ol>
-					<li>
-						<div>
-							<input
-								type="text"
-								ref={el => (this.input = el)}
-								onChange={e =>
-									this.setState({
-										currentItem: e.target.value
-									})
-								}
-							/>
-							<a
+					<li value="0">
+						<div className="listTop d-flex justify-content-between">
+							<div>
+								<input
+									type="text"
+									className="input"
+									id="in"
+									ref={el => (this.input = el)}
+									onChange={e =>
+										this.setState({
+											currentItem: e.target.value
+										})
+									}
+								/>
+							</div>
+							<div
 								ref={el => (this.plus = el)}
 								onClick={this.addItem}>
 								<i className="fas fa-plus" />
-							</a>
+							</div>
 						</div>
 					</li>
 					{this.state.list.map((item, i) => (
 						<li
+							value={i}
+							className="listTop d-flex justify-content-between"
 							key={i}
 							// onMouseOver={this.unhide()}
 							//ref={el => (this.listRefs[i] = el)}

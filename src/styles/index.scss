@@ -11,3 +11,98 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+/* List */
+ul {
+  counter-reset: index;  
+  padding: 0;
+  max-width: 100%;
+}
+
+/* List element */
+li {
+  counter-increment: index; 
+  justify-content: space-between;
+  padding: 12px 0;
+  box-sizing: border-box;
+  width:100%;
+
+}
+
+
+/* Element counter */
+li::before {
+  content: counters(index, ".", decimal-leading-zero);
+  font-size: 2.4rem;
+  text-align: center;
+  font-weight: bold;
+  min-width: 10vw;
+
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+  background-image: linear-gradient(to bottom, orangered, aquamarine);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Element separation */
+li + li {
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+
+
+
+.input {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 2px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+
+}
+
+.inputLabel {
+  position: relative;
+  top: 0;
+  display: inline;
+  transition: 0.4s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.input:focus {
+ 
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+
+/* demo */
+body {
+  font-family: 'Poppins', sans-serif; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.8rem;
+  background-color:#991515;
+  width:100%
+}
+
