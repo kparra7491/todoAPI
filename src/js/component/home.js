@@ -7,9 +7,34 @@ export class Home extends React.Component {
 
 		this.state = {
 			list: [],
+			listRefs: [],
 			currentItem: ""
 		};
 	}
+
+	addItem = () => {
+		if (this.state.currentItem) {
+			this.setState({
+				list: [...this.state.list, this.state.currentItem]
+			});
+		}
+	};
+
+	removeItem = index => {
+		var newList = this.state.list;
+		newList.splice(index, 1);
+
+		this.setState({
+			list: newList
+		});
+	};
+
+	// unhide = index => {
+	// 	var contentStyle = this.listRefs[index].style;
+	// 	contentStyle.display === "none"
+	// 		? (contentStyle.display = "block")
+	// 		: (contentStyle.display = "none");
+	// };
 
 	render() {
 		return (
@@ -28,24 +53,19 @@ export class Home extends React.Component {
 							/>
 							<a
 								ref={el => (this.plus = el)}
-								onClick={() =>
-									this.setState({
-										list: [
-											...this.state.list,
-											this.state.currentItem
-										]
-									})
-								}>
+								onClick={this.addItem}>
 								<i className="fas fa-plus" />
 							</a>
 						</div>
 					</li>
 					{this.state.list.map((item, i) => (
-						<li key={i}>
+						<li
+							key={i}
+							// onMouseOver={this.unhide()}
+							//ref={el => (this.listRefs[i] = el)}
+						>
 							{item}
-							<a
-							//can't get a .splice() to work 	onClick={e =>this.setState({ people: })}
-							>
+							<a onClick={() => this.removeItem(i)}>
 								<i className="fas fa-minus" />
 							</a>
 						</li>
